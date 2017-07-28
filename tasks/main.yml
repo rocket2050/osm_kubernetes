@@ -1,10 +1,18 @@
 ---
 # tasks file for etcd
 
+- lineinfile:
+    path: /etc/hosts
+    line: '{{ master_ip }}  {{ master_hostname }}'
+    state: present
+
+- lineinfile:
+    path: /etc/hosts
+    line: '{{ minion_ip }}  {{ minion_hostname }}'
+    state: present
+
 - name: install packages
   yum: name=etcd state=installed
-
-
 
 - name: Adding ETCD configuration file ...
   template: src=master.j2 dest=/etc/etcd/etcd.conf
