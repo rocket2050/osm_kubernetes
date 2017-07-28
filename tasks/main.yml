@@ -1,0 +1,21 @@
+---
+# tasks file for etcd
+
+- name: install packages
+  yum: name=etcd state=installed
+
+
+
+- name: Adding ETCD configuration file ...
+  template: src=master.j2 dest=/etc/etcd/etcd.conf
+  when: inventory_hostname == groups['etcd'][0]
+  notify: Etcd started
+
+- name: Adding ETCD configuration file ...
+  template: src=minion.j2 dest=/etc/etcd/etcd.conf
+  when: inventory_hostname == groups['etcd'][1]
+  notify: Etcd starte
+
+#- name: Starting etcd
+#  service: name=etcd state=started
+

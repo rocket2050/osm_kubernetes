@@ -1,0 +1,5 @@
+---
+# vars file for etcd
+
+master_hostname: "master"
+minion_hostname: "minion"
