@@ -1,4 +1,5 @@
 ---
-#- include_role: role.kube_master/vars/main.yml
-master_ip: master_ip: "{{ hostvars[groups['master'][0]]['ansible_eth1']['ipv4']['address'] }}"
-minion_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
+# vars file for kubernetes_master
+
+kube_master_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
+

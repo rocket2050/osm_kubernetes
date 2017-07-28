@@ -1,9 +1,7 @@
-
 ---
+# defaults file for kubernetes_master
 
-master_ip: master-controller
-minion_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
-flanneld_template: flanneld.j2
-kubernetes_config_template: config.j2
-minion_kubelet_template: kubelet.j2
+kube_master_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
+master_config_file: master_config.j2
+master_api_server_file: apiserver.j2
 

@@ -1,47 +1,33 @@
 ---
+# tasks file for kubernetes_master
 
-- name: Install flannel and Kubernetes onto the server
+- name: Install Kubernetes onto the server
   yum:
-   name: "{{ item }}"
+   name: kubernetes
    state: present
-  with_items:
-   - flannel
-   - kubernetes
   become: true
-  tags: download
+  tags: download_kubernetes
 
-- name: Copy the flannel configuration file for etcd server
+- name: Copy the apiserver configuration file for etcd server
   template:
-    src: "{{ flanneld_template }}"
-    dest: /etc/sysconfig/flanneld
+    src: "{{ master_api_server_file }}"
+    dest: /etc/kubernetes/apiserver
     mode: 0755
   become: true
 
 - name: Copy the kubernetes configuration file from template
   template:
-    src: "{{ kubernetes_config_template }}"
+    src: "{{ master_config_file }}"
     dest: /etc/kubernetes/config
-  become: true
-
-- name: Copy the kubelet file for all the minions
-  template:
-    src: "{{ minion_kubelet_template }}"
-    dest: /etc/kubernetes/kubelet
   become: true
 
 - name: start the services required
   service:
     name: "{{ item }}"
     state: started
-    enabled: True
+    enabled: true
   with_items:
-   - kube-proxy
-   - kubelet 
-   - docker 
-   - flanneld
-
-- name: check the ports
-  shell: "ip addr | grep flannel | grep inet"
-  register: flannel
-
-
+   - kube-controller-manager
+   - kube-apiserver
+   - kube-scheduler
+  become: true
