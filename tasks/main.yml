@@ -1,5 +1,10 @@
 ---
 # tasks file for kubernetes_master
+- name: Install ntp on server
+  yum:
+   name: ntp
+   state: present
+  become: true
 
 - name: Install Kubernetes onto the server
   yum:
@@ -30,4 +35,5 @@
    - kube-controller-manager
    - kube-apiserver
    - kube-scheduler
+   - ntpd
   become: true
