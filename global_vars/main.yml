@@ -1,3 +1,0 @@
----
-
-master_ip: "{{ hostvars[groups['minion'][0]]['ansible_eth0']['ipv4']['address'] }}"
