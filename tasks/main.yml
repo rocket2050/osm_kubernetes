@@ -34,6 +34,7 @@
     name: "{{ item }}"
     state: started
     enabled: True
+  become: true
   with_items:
    - kube-proxy
    - kubelet 
