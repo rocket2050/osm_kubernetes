@@ -28,7 +28,7 @@ ETCD_LISTEN_CLIENT_URLS="http://{{ ansible_hostname }}:{{ etcd_client_port }}"
 
 {% if groups[etcd_peers_group] and groups[etcd_peers_group] | length > 0 %}
 #[cluster]
-ETCD_INITIAL_ADVERTISE_PEER_URLS="http://{{ ansible_hostname }}:2381"
+ETCD_INITIAL_ADVERTISE_PEER_URLS="http://{{ ansible_hostname }}:{{ etcd_peer_port }}"
 #ETCD_INITIAL_ADVERTISE_PEER_URLS= 
 ETCD_INITIAL_CLUSTER="{{ initial_cluster() }}"
 ETCD_INITIAL_CLUSTER_STATE="{{ etcd_initial_cluster_state }}"
