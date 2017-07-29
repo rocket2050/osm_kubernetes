@@ -1,7 +1,7 @@
 ---
 
 etcd_client_port: 2379
-etcd_peer_port: 2380
+etcd_peer_port: 2381
 # Remove etcd_client_legacy_port & etcd_peer_legacy_port
 # when https://github.com/contiv/netplugin/issues/323 is fixed
 etcd_client_legacy_port: 4001
