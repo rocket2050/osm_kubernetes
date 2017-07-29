@@ -4,3 +4,6 @@
 #minion_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
 master_ip: "master"
 minion_ip: "minion"
+master_ip: "{{ hostvars[groups['master'][0]]['ansible_eth1']['ipv4']['address'] }}"
+minion_ip: '{{ ansible_eth1["ipv4"]["address"] }}'
+
