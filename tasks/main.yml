@@ -12,6 +12,12 @@
    state: present
   become: true
   tags: download_kubernetes
+  
+- name: Install flannel on server
+  yum:
+   name: flannel
+   state: present
+  become: true
 
 - name: Copy the apiserver configuration file for etcd server
   template:
