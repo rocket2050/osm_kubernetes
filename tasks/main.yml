@@ -42,5 +42,5 @@
    - kube-apiserver
    - kube-scheduler
    - ntpd
-   - flannel
+   - flanneld
   become: true
