@@ -18,6 +18,13 @@
    name: flannel
    state: present
   become: true
+  
+- name: Copy the flannel configuration file for etcd server
+  template:
+    src: "{{ flanneld_template }}"
+    dest: /etc/sysconfig/flanneld
+    mode: 0755
+  become: true
 
 - name: Copy the apiserver configuration file for etcd server
   template:
