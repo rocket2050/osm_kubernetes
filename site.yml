@@ -2,21 +2,21 @@
 
 - hosts: kubernetes
   roles:
-    - { role: "kubernetes/docker" }
+    - { role: "osm_kubernetes/docker" }
 #    - { role: "etcd" }
 
 - hosts: etcd
   roles:
-    - { role: "kubernetes/etcd" }
+    - { role: "osm_kubernetes/etcd" }
 #
 - hosts: master
   roles:
-    - { role: "kubernetes/kuber_master" }
+    - { role: "osm_kubernetes/kuber_master" }
 
 - hosts: kubernetes
   roles:
-    - { role: "kubernetes/flannel" }
+    - { role: "osm_kubernetes/flannel" }
 
 - hosts: minion
   roles:
-    - { role: "kubernetes/kuber_minion" }
+    - { role: "osm_kubernetes/kuber_minion" }
