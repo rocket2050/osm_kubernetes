@@ -1,0 +1,22 @@
+---
+
+- hosts: kubernetes
+  roles:
+    - { role: "kubernetes/docker" }
+#    - { role: "etcd" }
+
+- hosts: etcd
+  roles:
+    - { role: "kubernetes/etcd" }
+#
+- hosts: master
+  roles:
+    - { role: "kubernetes/kuber_master" }
+
+- hosts: kubernetes
+  roles:
+    - { role: "kubernetes/flannel" }
+
+- hosts: minion
+  roles:
+    - { role: "kubernetes/kuber_minion" }
